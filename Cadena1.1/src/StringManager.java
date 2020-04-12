@@ -48,7 +48,7 @@ public class StringManager extends javax.swing.JFrame {
         btnSp = new javax.swing.JButton();
         btnEn = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        panel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -113,6 +113,11 @@ public class StringManager extends javax.swing.JFrame {
                 txtNameActionPerformed(evt);
             }
         });
+        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNameKeyReleased(evt);
+            }
+        });
 
         btnSp.setBackground(new java.awt.Color(255, 0, 51));
         btnSp.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -143,27 +148,28 @@ public class StringManager extends javax.swing.JFrame {
                     .addComponent(txtName)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
-                        .addComponent(btnSp)
-                        .addGap(36, 36, 36)
-                        .addComponent(btnEn)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
+                        .addComponent(btnEn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnSp)))
                 .addGap(31, 31, 31))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSp)
-                    .addComponent(btnEn)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnSp)
+                        .addComponent(btnEn))
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("information"));
-        jPanel2.setToolTipText("");
+        panel.setBorder(javax.swing.BorderFactory.createTitledBorder("information"));
+        panel.setToolTipText("");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel2.setText("Your name is:");
@@ -197,6 +203,11 @@ public class StringManager extends javax.swing.JFrame {
         btnmay.setBackground(new java.awt.Color(0, 153, 255));
         btnmay.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         btnmay.setText("MAY");
+        btnmay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnmayActionPerformed(evt);
+            }
+        });
 
         jLabel6.setBackground(new java.awt.Color(255, 0, 51));
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -214,6 +225,12 @@ public class StringManager extends javax.swing.JFrame {
         btnmin.setBackground(new java.awt.Color(0, 153, 255));
         btnmin.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         btnmin.setText("MIN");
+        btnmin.setEnabled(false);
+        btnmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnminActionPerformed(evt);
+            }
+        });
 
         lblnume.setBackground(new java.awt.Color(255, 0, 51));
         lblnume.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -226,13 +243,13 @@ public class StringManager extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtnum, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(44, 44, 44)
-                        .addComponent(lblnume)))
+                        .addComponent(lblnume))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnmay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -243,18 +260,17 @@ public class StringManager extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtnum, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(lblnume, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtnum, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(68, 68, 68)
+                            .addComponent(lblnume, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addComponent(btnmay)
@@ -268,53 +284,53 @@ public class StringManager extends javax.swing.JFrame {
 
         lblletters.setText(".");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
+        panel.setLayout(panelLayout);
+        panelLayout.setHorizontalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLayout.createSequentialGroup()
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblchara, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblNameMin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblNameMa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(10, 10, 10))
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(panelLayout.createSequentialGroup()
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblletters, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(23, 23, 23))
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(panelLayout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        panelLayout.setVerticalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblName))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(lblNameMa))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblNameMin)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(lblchara))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(lblletters))
                 .addGap(28, 28, 28)
@@ -327,6 +343,7 @@ public class StringManager extends javax.swing.JFrame {
         btnShow.setBackground(new java.awt.Color(0, 153, 255));
         btnShow.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         btnShow.setText("SHOW");
+        btnShow.setEnabled(false);
         btnShow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShowActionPerformed(evt);
@@ -336,6 +353,7 @@ public class StringManager extends javax.swing.JFrame {
         btnReset.setBackground(new java.awt.Color(0, 153, 255));
         btnReset.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         btnReset.setText("RESET");
+        btnReset.setEnabled(false);
         btnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnResetActionPerformed(evt);
@@ -371,7 +389,7 @@ public class StringManager extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 23, Short.MAX_VALUE))
         );
@@ -380,7 +398,7 @@ public class StringManager extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -413,12 +431,28 @@ public class StringManager extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
 
+    public void habilitarBoton(){
+        if(!txtName.getText().isEmpty() ){
+          
+            btnShow.setEnabled(true);
+            btnReset.setEnabled(true);
+        }else{
+            
+            btnShow.setEnabled(false);
+            btnReset.setEnabled(false);
+        }
+        
+        
+    }
+    
+    
+    
     private void btnShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowActionPerformed
         // TODO add your handling code here:
-    
-        
      
-    String yName=txtName.getText().trim();    
+    btnShow.setEnabled(false);
+     
+    String yName=txtName.getText();    
     int c = txtName.getText().length();
     
     System.out.println("your name is:"+ yName);
@@ -466,7 +500,7 @@ public class StringManager extends javax.swing.JFrame {
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
         
-        
+        btnReset.setEnabled(false);
         
         txtName.setText("");
         lblName.setText("");
@@ -480,9 +514,25 @@ public class StringManager extends javax.swing.JFrame {
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void txtnumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnumActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here
         
-      
+    }
+       
+      public void habilitarBoton1(){
+        if(!txtnum.getText().isEmpty() ){
+          
+           btnmay.setEnabled(true);
+            btnmin.setEnabled(true);
+        }else{
+            
+            btnmay.setEnabled(false);
+            btnmin.setEnabled(false);
+        }
+        
+        
+        
+        
+        
     
         
         
@@ -491,50 +541,115 @@ public class StringManager extends javax.swing.JFrame {
     private void btnSpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSpActionPerformed
         // TODO add your handling code here:
         
-        
-        
-        setHttpReferrer("http://code.google.com/apis/language/translate/v2/getting_started.html");
-
-        String peticion = jLabel1.getText(); 
-        
-        try {
-            
-            String valorResultado= Translate.DEFAULT.execute(peticion, Language.SPANISH, Language.ENGLISH);
-            jLabel2.setText(peticion);
-            jLabel1.setText(peticion);
-            
-        }
-        catch(GoogleAPIException e)
-        {
-        }
-        System.out.printf("Translated Text:\n\t%s\n",jLabel1.getText());    
-            
-        
+         btnEn.setEnabled(true); 
+           btnSp.setEnabled(false);
+         
+       String yName=btnSp.getText();    
+    
+      System.out.println("your name is:"+ yName);
+      
+      jLabel1.setText("Tu nombre");
+      
+      btnShow.setText("MOSTRAR");
+      btnReset.setText("LIMPIAR");
+      
+      
+      jLabel2.setText("Tu nombre es:");
+      jLabel3.setText("Tu nombre en MAY");
+      jLabel5.setText("Tu nombre en MIN:");
+      jLabel4.setText("Total de caracteres:");
+      jLabel7.setText("Iniciales mayusculas:");
+      
+      
+      jLabel6.setText("Digite un numero:");
+      btnsearch.setText("BUSCAR");
+       
     }//GEN-LAST:event_btnSpActionPerformed
 
     private void btnEnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnActionPerformed
         // TODO add your handling code here:
+        
+        
+        btnEn.setEnabled(false); 
+        btnSp.setEnabled(true);
+         
+      String yName=btnEn.getText();    
+    
+      System.out.println("your name is:"+ yName);
+      jLabel1.setText("Your name");
+      btnShow.setText("SHOW");
+      btnReset.setText("RESET");
+      
+      
+      jLabel2.setText("Your name is:");
+      jLabel3.setText("Your name in MAY");
+      jLabel5.setText("Your name in MIN:");
+      jLabel4.setText("Total characters:");
+      jLabel7.setText("Initial capital letters:");
+      
+      
+      jLabel6.setText("Type a number:");
+      btnsearch.setText("SEARCH");
+       
+       
     }//GEN-LAST:event_btnEnActionPerformed
 
     private void btnsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsearchActionPerformed
         // TODO add your handling code here:
     
+    String yName=txtnum.getText();
+    System.out.println("Type a number:"+ yName);
+    
+    
+    lblnume.setText(yName);  
+    
      
-    String yName=txtnum.getText(); 
-    int pos =yName.indexOf("");
-    System.out.println("type a number:"+pos);
-    String primeraPalabra=yName.substring(0,pos);
-    System.out.println(""+primeraPalabra);
-              lblnume.setText(yName);
-         
-              String Rpta="";
-              this.txtnum.getText();
-              
-   
+    
+       
+    
 
-        
-        
+         
     }//GEN-LAST:event_btnsearchActionPerformed
+
+ 
+        
+
+    
+    
+    private void btnmayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmayActionPerformed
+        // TODO add your handling code here:
+       
+       btnmin.setEnabled(true); 
+       btnmay.setEnabled(false); 
+        
+     String yName=txtnum.getText(); 
+     lblnume.setText(txtnum.getText().toUpperCase());
+        
+        
+    
+    }//GEN-LAST:event_btnmayActionPerformed
+
+    private void txtNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyReleased
+        // TODO add your handling code here:
+        
+        habilitarBoton();
+        
+    }//GEN-LAST:event_txtNameKeyReleased
+
+    private void btnminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnminActionPerformed
+        // TODO add your handling code here:
+        
+          
+        btnmin.setEnabled(false); 
+        btnmay.setEnabled(true);
+        
+        lblnume.setText(txtnum.getText().toLowerCase());
+        
+        
+        
+         
+        
+    }//GEN-LAST:event_btnminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -588,7 +703,6 @@ public class StringManager extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -599,6 +713,7 @@ public class StringManager extends javax.swing.JFrame {
     private javax.swing.JLabel lblchara;
     private javax.swing.JLabel lblletters;
     private javax.swing.JLabel lblnume;
+    private javax.swing.JPanel panel;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtnum;
     // End of variables declaration//GEN-END:variables
